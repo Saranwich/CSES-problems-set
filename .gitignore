@@ -1,0 +1,6 @@
+/IntroductoryProblems/output
+*.exe
+*.DS_Store
+*.log
+*.tmp
+/.vscode
