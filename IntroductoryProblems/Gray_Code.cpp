@@ -10,30 +10,21 @@ void printBinary(int num, int n) {
     std::cout << "\n";
 }
 
-vector<int> generateGraycodeFromPrevious(int n, vector<int>& graycode){
+vector<int> generateGraycode(int n){
 
-    if (n < 1){
+    vector<int> graycode = {0,1};
+
+    if (n <= 1){
+        if (n < 1) graycode.clear();
         return graycode;
     }
 
-    vector<int> prev_graycode = graycode;
-
-    for (auto time = 0; time < n; time++){
-        bool switcher = 0;
-        graycode.clear();
-        for (auto i : prev_graycode){
-            if (switcher) {
-                graycode.push_back(( i << 1 ) + 1 );
-                graycode.push_back( i << 1 );
-            }else{
-                graycode.push_back( i << 1 );
-                graycode.push_back(( i << 1 ) + 1 );
-            }
-            switcher = ( switcher + 1 ) % 2;
+    for (int i = 0; i < n-1; i++){
+        auto cur_size = graycode.size();
+        for (int j = cur_size - 1; j >= 0; j--){
+            graycode.push_back(graycode[j] | 1 << (i+1));
         }
-        prev_graycode = graycode;
     }
-    
 
     return graycode;
 }
@@ -47,7 +38,7 @@ int main (){
     cin >> n;
 
     vector<int> gray_code = {0, 1};
-    gray_code = generateGraycodeFromPrevious(n-1, gray_code);
+    gray_code = generateGraycode(n);
     for (auto i : gray_code) {
         printBinary(i,n);
     }
