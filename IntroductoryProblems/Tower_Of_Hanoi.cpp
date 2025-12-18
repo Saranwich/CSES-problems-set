@@ -3,11 +3,11 @@ using namespace std;
 
 void remove_n_layer (int n, int source, int target, int buffer){
     if (n == 1){
-        cout << source << " " << target << endl;
+        cout << source << " " << target << "\n";
         return ;
     }
     remove_n_layer(n-1, source, buffer, target);
-    cout << source << " " << target << endl;
+    cout << source << " " << target << "\n";
     remove_n_layer(n-1, buffer, target, source);
 }
 
