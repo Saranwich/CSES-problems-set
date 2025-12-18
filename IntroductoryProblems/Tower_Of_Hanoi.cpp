@@ -1,14 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void printv(vector<int>& vec, string name = "vec"){
-    cout << "<" << name << ">: ";
-    for (auto i : vec){
-        cout << i << " ";
-    }
-    cout << endl;
-}
-
 int get_num_from_base(map<vector<int>*,int>& maper, vector<int>& base){
     return maper[&base];
 }
